@@ -20,7 +20,7 @@ def get_words():
 def exam_and_store():
     while True:
         aim = get_words()
-        if len(aim) < 5:
+        if len(aim) > 5:
             break
     return aim
 
@@ -37,7 +37,6 @@ def judge():
         check.append(aim[m])
     print('The lenth of the word is:', len(result))
     chance = 15 - int(input("Chose the difficulties from 0 - 10: "))
-    print(str(check))
     while True:
         for n in range(len(result)):
             if result[n] == "*":
