@@ -35,15 +35,25 @@ def judge():
             break
     for m in range(len(aim)):
         check.append(aim[m])
-    print('The lenth of the word is:', len(result))
+    print('The length of the word is:', len(result))
     chance = 15 - int(input("Chose the difficulties from 0 - 10: "))
+    if chance > 15:
+        print("Read the instruction carefully! Your chances will be 15 times")
+        chance = 15
+    elif chance < 5:
+        print("Read the instruction carefully! Your chances will be 5 times")
+        chance = 5
     while True:
-        for n in range(len(result)):
-            if result[n] == "*":
-                break
+        n = 0
+        while True:
+            if result[n] != '*':
+                n = n + 1
             else:
+                break
+            if n == len(result):
                 detect = True
                 chance = 0
+                break
         for k in range(chance):
             letter = str(input("Enter a letter: "))
             container = []
@@ -57,11 +67,14 @@ def judge():
                 print(result)
                 chance = chance - 1
                 print('Remaining Chance(s):', chance)
+                print()
                 break
             else:
-                print('You make this !')
+                print('Letter matched!')
                 print(result)
                 print('Remaining Chance(s):', chance)
+                print()
+                break
         if chance == 0:
             break
     if detect == True:
